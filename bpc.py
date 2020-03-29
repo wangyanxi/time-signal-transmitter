@@ -44,11 +44,11 @@ def get_checksum(codes):
 def bpc_code(now):
     codes = []
 
-    if now.second == 0:
+    if now.second == 1:
         p1 = 0
-    elif now.second == 20:
+    elif now.second == 21:
         p1 = 1
-    elif now.second == 40:
+    elif now.second == 41:
         p1 = 2
     else:
         raise Exception('wrong time')
@@ -94,9 +94,9 @@ def code_time(code):
 def broadcast_time():
 
     now = datetime.datetime.now(tz=datetime.timezone(datetime.timedelta(hours=8)))
-    codes = bpc_code(now)
-
     print('--- --- ---', now)
+
+    codes = bpc_code(now.replace(second=now.second + 1))
 
     time.sleep(1 - now.microsecond / 1e6)
 
@@ -135,6 +135,16 @@ def sys_signal_handler(sig, frame):
 if __name__ == '__main__':
     signal.signal(signal.SIGINT, sys_signal_handler)
     main()
+
+    # d = datetime.datetime(2004, 3, 9, hour=9, minute=15, second=1)
+    # codes = bpc_code(d)
+    # expect = [0, 0, 2, 1, 0, 3, 3, 0, 2, 1, 0, 2, 1, 0, 3, 0, 1, 0, 1]
+    # print(codes == expect)
+
+    # d = datetime.datetime(2010, 7, 2, hour=14, minute=38, second=41)
+    # codes = bpc_code(d)
+    # expect = [2, 0, 0, 2, 2, 1, 2, 1, 1, 3, 0, 0, 2, 1, 3, 0, 2, 2, 0]
+    # print(codes == expect)
 
 
 
