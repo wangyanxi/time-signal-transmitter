@@ -102,7 +102,7 @@ def broadcast_time():
 
     for i in range(len(codes)):
 
-        wave.set_frequency(10)
+        wave.set_frequency(0)
         time.sleep(code_time(codes[i]))
 
         wave.set_frequency(bpc_frequency)
