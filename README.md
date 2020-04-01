@@ -2,8 +2,8 @@
 
 | Callsign | Location | Frequency |
 |-----|-----------------|----------|
-| BPC | China | 68.5 KHz |
-
+| BPC | China | 68.5 kHz |
+| JJY | Japan | 40 kHz, 60 kHz |
 
 
 

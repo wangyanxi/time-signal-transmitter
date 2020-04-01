@@ -4,6 +4,7 @@ from datetime import datetime, timezone, timedelta
 import sys
 import signal
 import time
+import argparse
 from ad9833 import AD9833
 
 jjy_frequency = int(60 * 1000)
@@ -146,9 +147,20 @@ def sys_signal_handler(sig, frame):
 
 if __name__ == '__main__':
     signal.signal(signal.SIGINT, sys_signal_handler)
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-f', '--frequency',
+                        default=60,
+                        type=int,
+                        choices=[60, 40],
+                        help='signal frequency in kHz (default: 60 kHz)')
+
+    args = parser.parse_args()
+    jjy_frequency = args.frequency * 1000
+
     main()
 
-    # d = datetime(2004, 4, 1, hour=17, minute=25, second=0, tzinfo=timezone.utc)
+    # d = datetime(2004, 4, 1, hour=17, minute=25, second=0, tzinfo=japan_timezone)
 
     # code_time = {
     #     0: 0.8,
