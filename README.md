@@ -4,6 +4,7 @@
 |-----|-----------------|----------|
 | BPC | China | 68.5 kHz |
 | JJY | Japan | 40 kHz, 60 kHz |
+| WWVB | US | 60 kHz |
 
 
 
